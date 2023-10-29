@@ -8,5 +8,17 @@ provider:
   runtime: nodejs18.x
 
 functions:
-  function1:
-    handler: index.handler
+  getProductById:
+    handler: src/handlers/getProductById.getProductById
+    events:
+      - http:
+          path: /products/{productId}
+          method: get
+          cors: true
+  getProductsList:
+    handler: src/handlers/getProductsList.getProductsList
+    events:
+      - http:
+          path: /products
+          method: get
+          cors: true
